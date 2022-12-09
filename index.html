@@ -1,0 +1,225 @@
+<!-- Ethan Zhong--> 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+
+
+    <script>
+
+        var ran = Math.floor(Math.random() * 100) + 1;
+
+        var user = 50;
+        var counter = 5;
+
+
+        function reseter() {
+            ran = Math.floor(Math.random() * 100) + 1;
+            user = 50;
+            counter = 5;
+            document.getElementById("user").innerHTML = "Your guess is: " + user;
+            document.getElementById("response").innerHTML = "";
+            document.getElementById("count").innerHTML = "Number of guesses left: " + counter;
+            document.getElementById("user2").innerHTML = "";
+            document.getElementById("user3").innerHTML = "";
+            document.getElementById("user4").innerHTML = "";
+            document.getElementById("user1").innerHTML = "";
+            document.getElementById("user5").innerHTML = "";
+
+
+        }
+        function reset2() {
+            user = 50;
+            counter = 50;
+            ran = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("user").innerHTML = "You failed to guess the correct number. Please click reset to play again.";
+            document.getElementById("response").innerHTML = "";
+            document.getElementById("count").innerHTML = "Number of guesses left: " + 5;
+            document.getElementById("user2").innerHTML = "";
+            document.getElementById("user3").innerHTML = "";
+            document.getElementById("user4").innerHTML = "";
+            document.getElementById("user1").innerHTML = "";
+            document.getElementById("user5").innerHTML = "";
+
+
+        }
+        function reset3() {
+            user = 50;
+            counter = 5;
+            ran = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("user").innerHTML = "You guessed the correct number. Please click reset to play again.";
+            document.getElementById("response").innerHTML = "";
+            document.getElementById("count").innerHTML = "Number of guesses left: " + 5;
+            document.getElementById("user2").innerHTML = "";
+            document.getElementById("user3").innerHTML = "";
+            document.getElementById("user4").innerHTML = "";
+            document.getElementById("user1").innerHTML = "";
+            document.getElementById("user5").innerHTML = "";
+
+
+        }
+
+
+        function committer() {
+            console.log("Your guess is: " + user);
+            checker();
+            counter--;
+            if (counter <= 0) {
+                console.log("You took 5 guesses and did not reach the mystery number.");
+                document.getElementById("count").innerHTML = "You took 5 guesses and did not reach the mystery number.";
+                reset2();
+
+            }
+            else {
+                console.log("Number of guesses remaining: " + counter);
+
+                if (counter == 4) {
+                    document.getElementById("user1").innerHTML = "Your first guess is: " + user;
+                }
+                if (counter == 3) {
+                    document.getElementById("user2").innerHTML = "Your second guess is: " + user;
+
+                }
+                if (counter == 2) {
+                    document.getElementById("user3").innerHTML = "Your third guess is: " + user;
+
+                }
+                if (counter == 1) {
+                    document.getElementById("user4").innerHTML = "Your fourth guess is: " + user;
+
+                }
+                if (counter == 0) {
+                    document.getElementById("user5").innerHTML = "Your final guess is: " + user;
+
+                }
+                document.getElementById("count").innerHTML = "Number of guesses left: " + counter;
+
+            }
+
+        }
+
+        function checker(z) {
+            var d = Math.abs(user - ran);
+            if (d === 0) {
+                console.log("You guessed the correct number.");
+                confirmer = true;
+                document.getElementById("response").innerHTML = "You guessed the correct number.";
+                reset3();
+
+            }
+            else if (d < 2) {
+                console.log("Hotter");
+                document.getElementById("response").innerHTML = "Hotter";
+
+            }
+            else if (d < 5) {
+                console.log("Super Hot");
+                document.getElementById("response").innerHTML = "Very Hot";
+
+            }
+            else if (d < 8) {
+                console.log("Hot!");
+                document.getElementById("response").innerHTML = "Hot.";
+
+            }
+            else if (d < 15) {
+                console.log("Hot ish!");
+                document.getElementById("response").innerHTML = "Hotish.";
+
+            }
+            else if (d < 20) {
+                console.log("Warm!");
+                document.getElementById("response").innerHTML = "Warm.";
+
+            }
+            else if (d < 30) {
+                console.log("Cool!");
+                document.getElementById("response").innerHTML = "Cool.";
+
+            }
+            else if (d < 40) {
+                console.log("Cold ish");
+                document.getElementById("response").innerHTML = "ColdIsh.";
+
+            }
+            else if (d < 55) {
+                console.log("Cold!");
+                document.getElementById("response").innerHTML = "Cold.";
+
+            }
+            else {
+                console.log("Ice cold bruh...");
+                document.getElementById("response").innerHTML = "Ice Cold";
+
+            }
+
+        }
+
+        function subNum(y) {
+            user = user - y;
+            if (user < 0) {
+                user = 0;
+            }
+            document.getElementById("user").innerHTML = "You're guessing: " + user;
+        }
+
+
+        function addNum(x) {
+            user = user + x;
+            if (user > 100) {
+                user = 100;
+            }
+            document.getElementById("user").innerHTML = "You're guessing: " + user;
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1 style="color: rgb(0, 0, 0);"> Hot and Cold</h1>
+
+    <h2 style="color: rgb(0, 0, 0);"> Your goal is to guess the number I am thinking of between 0 and 100.
+
+    </h2>
+
+    <h3 style="color: rgb(0, 0, 0);"> You have 5 guesses. Good Luck! </h3>
+
+    
+    <button style="color: green;" onclick="reseter()">Reset</button>
+    <button style="color: green;" onclick="addNum(1)">+1</button>
+    <button style="color: green;" onclick="addNum(5)">+5</button>
+    <button style="color: green;" onclick="addNum(10)">+10</button>
+    <button style="color: green;" onclick="addNum(25)">+25</button>
+    <button style="color: green;" onclick="addNum(50)">+50</button>
+    <button style="color: green;" onclick="subNum(1)">-1</button>
+    <button style="color: green;" onclick="subNum(5)">-5</button>
+    <button style="color: green;" onclick="subNum(10)">-10</button>
+    <button style="color: green;" onclick="subNum(25)">-25</button>
+    <button style="color: green;" onclick="subNum(50)">-50</button>
+    <button style="color: green;" onclick="committer()">Commit</button>
+
+    <p id="user" style="color:rgb(0, 0, 0)"> Your number is: 50</p>
+    <break></break>
+    <p id="user1"> </p>
+    <break></break>
+    <p id="user2"> </p>
+    <break></break>
+    <p id="user3"> </p>
+    <break></break>
+    <p id="user4"> </p>
+    <break></break>
+    <p id="user5"> </p>
+
+    <break></break>
+    <h2 id="response"></h2>
+    <p id="count" style="color: rgb(0, 0, 0);">Number of guesses left: 5</p>
+
+
+</body>
+
+</html>
